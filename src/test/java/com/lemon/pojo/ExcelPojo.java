@@ -1,34 +1,36 @@
-package com.test.day02;
-
+package com.lemon.pojo;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 
-/**
- * easyPOI映射实体类，类中的属性需要和Excel表头保持一致
- */
-public class CaseInfo {
-    @Excel(name = "序号(caseId)")
+public class ExcelPojo {
+    @Excel(name="序号(caseId)")
     private int caseId;
 
-    @Excel(name = "接口模块(interface)")
+    @Excel(name="接口模块(interface)")
     private String interfaceName;
 
-    @Excel(name = "用例标题(title)")
+    @Excel(name="用例标题(title)")
     private String title;
 
-    @Excel(name = "请求头(requestHeader)")
+    @Excel(name="请求头(requestHeader)")
     private String requestHeader;
 
-    @Excel(name = "请求方式(method)")
+    @Excel(name="请求方式(method)")
     private String method;
 
-    @Excel(name = "接口地址(url)")
+    @Excel(name="接口地址(url)")
     private String url;
 
-    @Excel(name = "参数输入(inputParams)")
+    @Excel(name="参数输入(inputParams)")
     private String inputParams;
 
-    @Excel(name = "期望返回结果(expected)")
+    @Excel(name="期望响应结果(expected)")
     private String expected;
+
+    @Excel(name="提取返回数据(extract)")
+    private String extract;
+
+    @Excel(name="数据库校验")
+    private String dbAssert;
 
     public int getCaseId() {
         return caseId;
@@ -94,9 +96,25 @@ public class CaseInfo {
         this.expected = expected;
     }
 
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
+    }
+
+    public String getDbAssert() {
+        return dbAssert;
+    }
+
+    public void setDbAssert(String dbAssert) {
+        this.dbAssert = dbAssert;
+    }
+
     @Override
     public String toString() {
-        return "CaseInfo{" +
+        return "ExcelPojo{" +
                 "caseId=" + caseId +
                 ", interfaceName='" + interfaceName + '\'' +
                 ", title='" + title + '\'' +
@@ -105,8 +123,8 @@ public class CaseInfo {
                 ", url='" + url + '\'' +
                 ", inputParams='" + inputParams + '\'' +
                 ", expected='" + expected + '\'' +
+                ", extract='" + extract + '\'' +
+                ", dbAssert='" + dbAssert + '\'' +
                 '}';
     }
-
-
 }

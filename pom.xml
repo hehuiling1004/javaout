@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lemon</groupId>
-    <artifactId>class_28_29_30</artifactId>
+    <artifactId>class_25_26_27</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -16,6 +16,7 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -23,6 +24,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -118,6 +120,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

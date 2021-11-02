@@ -1,24 +1,20 @@
-package com.lemon.pojo;
-
+package com.test.day02;
 import cn.afterturn.easypoi.excel.annotation.Excel;
 
-/**
- * easyPOI映射实体类，类中的属性需要和Excel表头保持一致
- */
-public class CaseInfo {
+public class ExcelPojo {
     @Excel(name="序号(caseId)")
     private int caseId;
 
     @Excel(name="接口模块(interface)")
     private String interfaceName;
 
-    @Excel(name = "用例标题(title)")
+    @Excel(name="用例标题(title)")
     private String title;
 
-    @Excel(name = "请求头(requestHeader)")
+    @Excel(name="请求头(requestHeader)")
     private String requestHeader;
 
-    @Excel(name = "请求方式(method)")
+    @Excel(name="请求方式(method)")
     private String method;
 
     @Excel(name="接口地址(url)")
@@ -29,12 +25,6 @@ public class CaseInfo {
 
     @Excel(name="期望返回结果(expected)")
     private String expected;
-
-    @Excel(name="提取表达式(extractExper)")
-    private String extractExper;
-
-    @Excel(name="数据库断言")
-    private String dbAssert;
 
     public int getCaseId() {
         return caseId;
@@ -100,25 +90,9 @@ public class CaseInfo {
         this.expected = expected;
     }
 
-    public String getExtractExper() {
-        return extractExper;
-    }
-
-    public void setExtractExper(String extractExper) {
-        this.extractExper = extractExper;
-    }
-
-    public String getDbAssert() {
-        return dbAssert;
-    }
-
-    public void setDbAssert(String dbAssert) {
-        this.dbAssert = dbAssert;
-    }
-
     @Override
     public String toString() {
-        return "CaseInfo{" +
+        return "ExcelPojo{" +
                 "caseId=" + caseId +
                 ", interfaceName='" + interfaceName + '\'' +
                 ", title='" + title + '\'' +
@@ -127,8 +101,6 @@ public class CaseInfo {
                 ", url='" + url + '\'' +
                 ", inputParams='" + inputParams + '\'' +
                 ", expected='" + expected + '\'' +
-                ", extractExper='" + extractExper + '\'' +
-                ", dbAssert='" + dbAssert + '\'' +
                 '}';
     }
 }

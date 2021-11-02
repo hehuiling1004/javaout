@@ -3,58 +3,49 @@ package com.lemon.testcases;
 import com.alibaba.fastjson.JSONObject;
 import com.lemon.common.BaseTest;
 import com.lemon.data.Environment;
-import com.lemon.pojo.CaseInfo;
-import com.lemon.utils.ExcelUtil;
-import com.lemon.utils.RandomDataUtil;
+import com.lemon.pojo.ExcelPojo;
+import com.lemon.util.PhoneRandomUtil;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-/**
- * 注册功能模块的测试类
- */
 public class LoginTest extends BaseTest {
 
     @BeforeClass
-    public void beforeClass(){
-        //生成一个未注册的手机号码
-        String mobile_phone = RandomDataUtil.getUnregisterPhone();
-        Environment.envMap.put("mobile_phone",mobile_phone);
-        //只需要读取第一条数据
-        List<CaseInfo> datas = ExcelUtil.readExcelSpecifyDatas(2,1,1);
-        CaseInfo registerInfo = datas.get(0);
-        //替换mobile_phone
-        registerInfo = paramsReplace(registerInfo);
-        //发起接口请求，注册一个用户
-        Response res = request(registerInfo);
-        /*String mobilephone = res.jsonPath().get("data.mobile_phone");
-        //将手机号码保存至环境变量
-        Environment.envMap.put("mobile_phone",mobilephone);*/
-        extractToEnvironment(res,registerInfo);
-        //测试数据生成
-        //1、调用接口生成 被调用正常
-        //2、读取文件
-        //3、数据库操作 必须要对数据库表字段\结构 要求高
-        //4、通过UI
+    public void setup(){
+        //生成一个没有被注册过的手机号码
+        String phone = PhoneRandomUtil.getUnregisterPhone();
+        Environment.envData.put("phone",phone);
+        //前置条件
+        //读取Excel里面的第一条数据->执行->生成一条注册过了手机号码
+        List<ExcelPojo> listDatas = readSpecifyExcelData(2,0,1);
+        ExcelPojo excelPojo = listDatas.get(0);
+        //替换
+        excelPojo = casesReplace(excelPojo);
+        //执行【注册】接口请求
+        Response res = request(excelPojo,"login");
+        //提取注册返回的手机号码保存到环境变量中
+        extractToEnvironment(excelPojo,res);
     }
 
-
     @Test(dataProvider = "getLoginDatas")
-    public void login(CaseInfo caseInfo){
-        caseInfo = paramsReplace(caseInfo);
-        //发起接口请求
-        Response res = request(caseInfo);
+    public void testLogin(ExcelPojo excelPojo){
+        //替换用例数据
+        excelPojo = casesReplace(excelPojo);
+        //发起登录请求
+        Response res = request(excelPojo,"login");
         //断言
-        assertResponse(res,caseInfo);
+        assertResponse(excelPojo,res);
     }
 
     @DataProvider
     public Object[] getLoginDatas(){
-        List<CaseInfo> listDatas = ExcelUtil.readExcelSpecifyDatas(2,2);
+        List<ExcelPojo> listDatas = readSpecifyExcelData(2,1);
+        //把集合转换为一个一维数组
         return listDatas.toArray();
     }
 
