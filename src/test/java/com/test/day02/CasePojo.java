@@ -1,10 +1,11 @@
-package com.lemon.pojo;
+package com.test.day02;
+
 import cn.afterturn.easypoi.excel.annotation.Excel;
 
-public class ExcelPojo {
+public class CasePojo {
+    //加注解目的和表头产生映射
     @Excel(name="序号(caseId)")
     private int caseId;
-
     @Excel(name="接口模块(interface)")
     private String interfaceName;
 
@@ -23,14 +24,8 @@ public class ExcelPojo {
     @Excel(name="参数输入(inputParams)")
     private String inputParams;
 
-    @Excel(name="期望响应结果(expected)")
+    @Excel(name="期望返回结果(expected)")
     private String expected;
-
-    @Excel(name="提取返回数据(extract)")
-    private String extract;
-
-    @Excel(name="数据库校验")
-    private String dbAssert;
 
     public int getCaseId() {
         return caseId;
@@ -84,6 +79,8 @@ public class ExcelPojo {
         return inputParams;
     }
 
+
+
     public void setInputParams(String inputParams) {
         this.inputParams = inputParams;
     }
@@ -96,25 +93,23 @@ public class ExcelPojo {
         this.expected = expected;
     }
 
-    public String getExtract() {
-        return extract;
+    public CasePojo() {
     }
 
-    public void setExtract(String extract) {
-        this.extract = extract;
-    }
-
-    public String getDbAssert() {
-        return dbAssert;
-    }
-
-    public void setDbAssert(String dbAssert) {
-        this.dbAssert = dbAssert;
+    public CasePojo(int caseId, String interfaceName, String title, String requestHeader, String method, String url, String inputParams, String expected) {
+        this.caseId = caseId;
+        this.interfaceName = interfaceName;
+        this.title = title;
+        this.requestHeader = requestHeader;
+        this.method = method;
+        this.url = url;
+        this.inputParams = inputParams;
+        this.expected = expected;
     }
 
     @Override
     public String toString() {
-        return "ExcelPojo{" +
+        return "CasePojo{" +
                 "caseId=" + caseId +
                 ", interfaceName='" + interfaceName + '\'' +
                 ", title='" + title + '\'' +
@@ -123,8 +118,6 @@ public class ExcelPojo {
                 ", url='" + url + '\'' +
                 ", inputParams='" + inputParams + '\'' +
                 ", expected='" + expected + '\'' +
-                ", extract='" + extract + '\'' +
-                ", dbAssert='" + dbAssert + '\'' +
                 '}';
     }
 }

@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Environment {
-    //环境变量
-/*    public static String token;
-    public static int memberId;*/
-    public static Map<String,Object> envData = new HashMap<String, Object>();
+    //声明定义一个map（类似postman的环境遍历）
+    public  static Map<String,Object> envMap = new HashMap<String, Object>();
 }

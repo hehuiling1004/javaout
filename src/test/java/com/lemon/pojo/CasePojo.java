@@ -1,30 +1,11 @@
-package com.test.day02;
+package com.lemon.pojo;
+
 import cn.afterturn.easypoi.excel.annotation.Excel;
 
-public class ExcelPojo {
+public class CasePojo {
+    //加注解目的和表头产生映射
     @Excel(name="序号(caseId)")
     private int caseId;
-
-    @Excel(name="接口模块(interface)")
-    private String interfaceName;
-
-    @Excel(name="用例标题(title)")
-    private String title;
-
-    @Excel(name="请求头(requestHeader)")
-    private String requestHeader;
-
-    @Excel(name="请求方式(method)")
-    private String method;
-
-    @Excel(name="接口地址(url)")
-    private String url;
-
-    @Excel(name="参数输入(inputParams)")
-    private String inputParams;
-
-    @Excel(name="期望返回结果(expected)")
-    private String expected;
 
     public int getCaseId() {
         return caseId;
@@ -90,9 +71,41 @@ public class ExcelPojo {
         this.expected = expected;
     }
 
+    public String getExtractExper() {
+        return extractExper;
+    }
+
+    public void setExtractExper(String extractExper) {
+        this.extractExper = extractExper;
+    }
+
+    @Excel(name="接口模块(interface)")
+    private String interfaceName;
+
+    @Excel(name = "用例标题(title)")
+    private String title;
+
+    @Excel(name = "请求头(requestHeader)")
+    private String requestHeader;
+
+    @Excel(name = "请求方式(method)")
+    private String method;
+
+    @Excel(name="接口地址(url)")
+    private String url;
+
+    @Excel(name="参数输入(inputParams)")
+    private String inputParams;
+
+    @Excel(name="期望返回结果(expected)")
+    private String expected;
+
+    @Excel(name="提取表达式(extractExper)")
+    private String extractExper;
+
     @Override
     public String toString() {
-        return "ExcelPojo{" +
+        return "CaseInfo{" +
                 "caseId=" + caseId +
                 ", interfaceName='" + interfaceName + '\'' +
                 ", title='" + title + '\'' +
@@ -101,6 +114,7 @@ public class ExcelPojo {
                 ", url='" + url + '\'' +
                 ", inputParams='" + inputParams + '\'' +
                 ", expected='" + expected + '\'' +
+                ", extractExper='" + extractExper + '\'' +
                 '}';
     }
 }
