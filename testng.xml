@@ -3,11 +3,9 @@
 <suite name="测试套件" >
     <test name="测试">
         <classes>
-            <class name="com.lemon.testcases.RegisterTest"/>
-            <class name="com.lemon.testcases.LoginTest"/>
-            <class name="com.lemon.testcases.RechargeTest"/>
-            <class name="com.lemon.testcases.AddloanTest"/>
-            <class name="com.lemon.testcases.InvestFlowTest"/>
+            <class name="com.lemon.testcases.DataDrivernTestTest"/>
+            <class name="com.lemon.testcases.LoginCase"/>
+            <class name="com.lemon.testcases.RegisterCase"/>
         </classes>
     </test>
 </suite>
